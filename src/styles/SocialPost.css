@@ -1,0 +1,44 @@
+.social-post {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background-color: #181818;
+  font-family: 'Roboto Mono', monospace;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #222;
+  background: #1a1a1a;
+}
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid #e50914;
+}
+
+.post-user-name {
+  font-weight: bold;
+  color: #e50914;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #e50914, 0 0 12px #000;
+}
+
+.post-content {
+  padding: 16px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+.post-comments {
+  border-top: 1px solid #222;
+  background: #151515;
+} 

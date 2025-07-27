@@ -1,0 +1,36 @@
+body {
+  background-color: #111111;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', 'Roboto Mono', 'Courier New', monospace, Arial, sans-serif;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #181818 0%, #232526 100%);
+  min-height: 100vh;
+}
+
+.App-header {
+  background-color: #181818;
+  padding: 20px;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.App-header h1 {
+  color: #e50914;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px #e50914, 0 0 20px #000;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+main {
+  background: transparent;
+} 

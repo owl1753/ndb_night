@@ -1,0 +1,15 @@
+.comment {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.comment:hover {
+  background-color: #f9f9f9;
+}
+
+.comment-user {
+  font-weight: bold;
+  margin-right: 8px;
+} 
