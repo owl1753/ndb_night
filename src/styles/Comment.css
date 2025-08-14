@@ -3,13 +3,24 @@
   border-bottom: 1px solid #eee;
   cursor: pointer;
   transition: background-color 0.2s;
+  user-select: none;
+  position: relative;
 }
 
 .comment:hover {
   background-color: #f9f9f9;
 }
 
+.comment:active {
+  background-color: #e0e0e0;
+}
+
 .comment-user {
   font-weight: bold;
   margin-right: 8px;
-} 
+  pointer-events: none;
+}
+
+.comment-text {
+  pointer-events: none;
+}

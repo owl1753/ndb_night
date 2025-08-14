@@ -1,9 +1,14 @@
-import React from 'react';
-import '../styles/Comment.css';
+import React from "react";
+import "../styles/Comment.css";
 
 const Comment = ({ comment, onCommentClick }) => {
-  const handleClick = () => {
-    onCommentClick(comment);
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // comment 객체가 유효한 경우에만 실행
+    if (comment && comment.id) {
+      onCommentClick(comment);
+    }
   };
 
   return (
@@ -14,4 +19,4 @@ const Comment = ({ comment, onCommentClick }) => {
   );
 };
 
-export default Comment; 
+export default Comment;

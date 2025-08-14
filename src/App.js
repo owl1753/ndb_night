@@ -16,7 +16,13 @@ function App() {
   }, []);
 
   const handleCommentClick = (comment) => {
-    if (!foundGoodComments.includes(comment.id)) {
+    // comment 객체가 유효하고, isGood이 true이고, 이미 찾은 선플이 아닌 경우에만 실행
+    if (
+      comment &&
+      comment.id &&
+      comment.isGood === true &&
+      !foundGoodComments.includes(comment.id)
+    ) {
       setCurrentGoodComment(comment);
       // 1초 후에 점프스케어 표시
       setTimeout(() => {
@@ -36,7 +42,6 @@ function App() {
     setCurrentGoodComment(null);
   };
 
-
   const postWithShuffledComments = { ...postData, comments: shuffledComments };
 
   return (
@@ -45,12 +50,6 @@ function App() {
         <h1>NDB startgram</h1>
       </header>
       <main>
-        <SocialPost
-          post={{
-            ...postWithShuffledComments,
-            user: { ...postWithShuffledComments.user, name: "Adam" },
-          }}
-          onCommentClick={handleCommentClick}
         <SocialPost
           post={{
             ...postWithShuffledComments,
@@ -68,7 +67,5 @@ function App() {
     </div>
   );
 }
-
-export default App;
 
 export default App;
