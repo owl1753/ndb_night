@@ -41,3 +41,5 @@ const JumpScare = ({ onClose, selectedComment }) => {
 };
 
 export default JumpScare;
+
+export default JumpScare;

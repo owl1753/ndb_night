@@ -23,6 +23,9 @@ function App() {
         setShowJumpScare(true);
       }, 1000);
       setFoundGoodComments([...foundGoodComments, comment.id]);
+      setShuffledComments(
+        shuffledComments.filter((value) => value.id !== comment.id)
+      );
     }
   };
 
@@ -33,6 +36,7 @@ function App() {
     setCurrentGoodComment(null);
   };
 
+
   const postWithShuffledComments = { ...postData, comments: shuffledComments };
 
   return (
@@ -41,6 +45,12 @@ function App() {
         <h1>NDB startgram</h1>
       </header>
       <main>
+        <SocialPost
+          post={{
+            ...postWithShuffledComments,
+            user: { ...postWithShuffledComments.user, name: "Adam" },
+          }}
+          onCommentClick={handleCommentClick}
         <SocialPost
           post={{
             ...postWithShuffledComments,
@@ -58,5 +68,7 @@ function App() {
     </div>
   );
 }
+
+export default App;
 
 export default App;
