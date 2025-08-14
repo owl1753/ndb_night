@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import SocialPost from './components/SocialPost';
-import JumpScare from './components/JumpScare';
-import { postData } from './data';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import SocialPost from "./components/SocialPost";
+import JumpScare from "./components/JumpScare";
+import { postData } from "./data";
+import "./App.css";
 
 function App() {
   const [showJumpScare, setShowJumpScare] = useState(false);
@@ -16,25 +16,23 @@ function App() {
   }, []);
 
   const handleCommentClick = (comment) => {
-    if ( !foundGoodComments.includes(comment.id)) {
+    if (!foundGoodComments.includes(comment.id)) {
       setCurrentGoodComment(comment);
-      setShowJumpScare(true);
+      // 1초 후에 점프스케어 표시
+      setTimeout(() => {
+        setShowJumpScare(true);
+      }, 1000);
       setFoundGoodComments([...foundGoodComments, comment.id]);
     }
   };
 
   const handleCloseJumpScare = () => {
     setShowJumpScare(false);
-    // After closing the jump scare, maybe show the good comment for reading
-    if (currentGoodComment) {
-        // The user should read the comment aloud. 
-        // We can show an alert or a modal for this.
-        // For simplicity, I will use an alert.
-        alert(`정화의 의식:\n\n"${currentGoodComment.text}"`);
-        setCurrentGoodComment(null);
-    }
+    // 점프스케어가 자동으로 닫힐 때는 JumpScare 컴포넌트에서 alert를 처리합니다
+    // 수동으로 닫힐 때는 추가 동작이 필요하지 않습니다
+    setCurrentGoodComment(null);
   };
-  
+
   const postWithShuffledComments = { ...postData, comments: shuffledComments };
 
   return (
@@ -43,14 +41,22 @@ function App() {
         <h1>NDB startgram</h1>
       </header>
       <main>
-        <SocialPost 
-          post={{...postWithShuffledComments, user: { ...postWithShuffledComments.user, name: 'Adam' }}} 
-          onCommentClick={handleCommentClick} 
+        <SocialPost
+          post={{
+            ...postWithShuffledComments,
+            user: { ...postWithShuffledComments.user, name: "Adam" },
+          }}
+          onCommentClick={handleCommentClick}
         />
       </main>
-      {showJumpScare && <JumpScare onClose={handleCloseJumpScare} />}
+      {showJumpScare && (
+        <JumpScare
+          onClose={handleCloseJumpScare}
+          selectedComment={currentGoodComment}
+        />
+      )}
     </div>
   );
 }
 
-export default App; 
+export default App;
