@@ -9,6 +9,7 @@ function App() {
   const [foundGoodComments, setFoundGoodComments] = useState([]);
   const [shuffledComments, setShuffledComments] = useState([]);
   const [currentGoodComment, setCurrentGoodComment] = useState(null);
+  const [isWaiting, setIsWaiting] = useState(false);
 
   // Shuffle comments on initial render
   useEffect(() => {
@@ -16,13 +17,18 @@ function App() {
   }, []);
 
   const handleCommentClick = (comment) => {
-    // comment 객체가 유효하고, isGood이 true이고, 이미 찾은 선플이 아닌 경우에만 실행
+    // 대기 중이거나 이미 찾은 선플인 경우 클릭 무시
+    if (isWaiting || foundGoodComments.includes(comment.id)) {
+      return;
+    }
+    
+    // comment 객체가 유효하고, isGood이 true인 경우에만 실행
     if (
       comment &&
       comment.id &&
-      comment.isGood === true &&
-      !foundGoodComments.includes(comment.id)
+      comment.isGood === true
     ) {
+      setIsWaiting(true); // 대기 상태 시작
       setCurrentGoodComment(comment);
       // 1초 후에 점프스케어 표시
       setTimeout(() => {
@@ -40,6 +46,7 @@ function App() {
     // 점프스케어가 자동으로 닫힐 때는 JumpScare 컴포넌트에서 alert를 처리합니다
     // 수동으로 닫힐 때는 추가 동작이 필요하지 않습니다
     setCurrentGoodComment(null);
+    setIsWaiting(false); // 대기 상태 해제
   };
 
   const postWithShuffledComments = { ...postData, comments: shuffledComments };
